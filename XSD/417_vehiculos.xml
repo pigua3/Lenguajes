@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="vehiculos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="vehiculo" type="tipovehiculo" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>         
+        </xs:complexType>   
+    </xs:element>
+    
+    
+    
+    <xs:complexType name="tipovehiculo">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="modelo" type="xs:string" />
+            <xs:element name="fabricacion" type="tipofabricacion"/>
+            <xs:element name="modificaciones" type="tipomodificacion" />
+        </xs:sequence>
+    </xs:complexType>  
+    
+    <xs:complexType name="tipofabricacion">
+        <xs:sequence>
+            <xs:element name="inicio" type="tipoinicio" />
+            <xs:element name="fin" type="tipofin" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="tipoinicio">
+        <xs:sequence>
+            <xs:element name="dia" type="tipodia" />
+            <xs:element name="mes" type="tipomes" />
+            <xs:element name="anyo" type="tipoanyo" />
+        </xs:sequence>
+    </xs:complexType>   
+    
+    
+    <xs:complexType name="tipofin">
+        <xs:sequence>
+            <xs:element name="dia" type="tipodia"/>
+            <xs:element name="mes" type="tipomes" />
+            <xs:element name="anyo" type="tipoanyo" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    <xs:complexType name="tipomodificaciones">
+        <xs:sequence>
+            <xs:element name="modificaion" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence> 
+    </xs:complexType>
+    
+    <xs:simpleType name="tipodia">
+        <xs:restriction base="xs:string" >
+          <xs:length value="2" /> 
+          <xs:pattern value="[01-31]" />
+        </xs:restriction>       
+    </xs:simpleType>
+    
+     <xs:simpleType name="tipomes">
+        <xs:restriction base="xs:string">
+          <xs:length value="2" /> 
+          <xs:pattern value="[01-31]" />
+        </xs:restriction>     
+    </xs:simpleType>
+    
+      <xs:simpleType name="tipoanyo">
+        <xs:restriction base="xs:positiveinteger">
+          <xs:length value="4" /> 
+          <xs:pattern value="[1900-2099]" />
+        </xs:restriction>       
+    </xs:simpleType>
+    
+</xs:schema>
